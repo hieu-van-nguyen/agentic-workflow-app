@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Repository, View } from '../types';
-import { MOCK_REPOS } from '../mocks/data';
+import { Repository, View } from '../../types/types';
+import { MOCK_REPOS } from '../../services/data';
 import { Navbar, Nav, Container, Form, Table, Badge, Button } from 'react-bootstrap';
 
 interface RepoDashboardProps {

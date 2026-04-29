@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Repository, View } from '../types';
-import { MOCK_REPOS, MOCK_TASKS } from '../mocks/data';
+import { Repository, View } from '../../types/types';
+import { MOCK_REPOS, MOCK_TASKS } from '../../services/data';
 
 interface RepoInsightsProps {
   repoId: string;
@@ -33,7 +33,7 @@ export const RepoInsights: React.FC<RepoInsightsProps> = ({ repoId, onNavigate }
         <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
           Repo Health Summary
         </h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {[
             { label: 'Main Branch', value: repo.health.branch, icon: '🟢' },
             { label: 'Dependencies', value: repo.health.dependencies, icon: '📦' },
@@ -42,7 +42,7 @@ export const RepoInsights: React.FC<RepoInsightsProps> = ({ repoId, onNavigate }
             { label: 'Last Commit', value: repo.health.lastCommit, icon: '🕒' },
             { label: 'Build Status', value: repo.health.buildStatus, icon: '🚀' },
           ].map((item, idx) => (
-            <div key={idx} className="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2 shadow-sm">
+            <div key={idx} className="px-3 py-2 bg-gray-100 border border-gray-200 rounded-lg text-sm font-medium text-gray-700 flex items-center gap-2 shadow-sm truncate">
               <span>{item.icon} {item.label}: {item.value}</span>
             </div>
           ))}

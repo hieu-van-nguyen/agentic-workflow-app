@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { View } from '../types';
-import { MOCK_REPOS, SIMULATED_LOGS } from '../mocks/data';
+import { View } from '../../types/types';
+import { MOCK_REPOS, SIMULATED_LOGS } from '../../services/data';
 
 interface ExecutionMonitorProps {
   repoId: string;

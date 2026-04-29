@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View } from './types';
-import { RepoDashboard } from './components/Dashboard';
-import { RepoInsights } from './components/Insights';
-import { ExecutionMonitor } from './components/Monitor';
+import { View } from './types/types';
+import { RepoDashboard } from './components/dashboard/Dashboard';
+import { RepoInsights } from './components/insights/Insights';
+import { ExecutionMonitor } from './components/monitor/Monitor';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<View>('Dashboard');

@@ -1,4 +1,4 @@
-import { Repository, AgentTask, LogEntry } from '../types';
+import { Repository, AgentTask, LogEntry } from '../types/types';
 
 export const MOCK_REPOS: Repository[] = [
   {
@@ -46,6 +46,81 @@ export const MOCK_REPOS: Repository[] = [
       buildStatus: 'Unstable',
     },
   },
+  {
+    id: '4',
+    name: "payments-api",
+    lastActivity: "5m ago: Security Scan running",
+    status: "Warning",
+    description: 'Shared React component library',
+    health: {
+      branch: 'main',
+      dependencies: 25,
+      testCoverage: '75%',
+      openIssues: 12,
+      lastCommit: '24h',
+      buildStatus: 'Unstable',
+    },
+  },
+  {
+    id: '5',
+    name: "notifications-service",
+    lastActivity: "3h ago: Refactor completed",
+    status: "Success",
+    description: 'Shared React component library',
+    health: {
+      branch: 'main',
+      dependencies: 25,
+      testCoverage: '75%',
+      openIssues: 12,
+      lastCommit: '24h',
+      buildStatus: 'Unstable',
+    },
+  },
+  {
+    id: '6',
+    name: "analytics-pipeline",
+    lastActivity: "2d ago: Test coverage dropped to 72%",
+    status: "Warning",
+    description: 'Shared React component library',
+    health: {
+      branch: 'main',
+      dependencies: 25,
+      testCoverage: '75%',
+      openIssues: 12,
+      lastCommit: '24h',
+      buildStatus: 'Unstable',
+    },
+  },
+  {
+    id: '7',
+    name: "mobile-sdk",
+    lastActivity: "10m ago: Build succeeded",
+    status: "Success",
+    description: 'Shared React component library',
+    health: {
+      branch: 'main',
+      dependencies: 25,
+      testCoverage: '75%',
+      openIssues: 12,
+      lastCommit: '24h',
+      buildStatus: 'Unstable',
+    },
+  },
+  {
+    id: '8',
+    name: "infra-terraform",
+    lastActivity: "30m ago: Plan generated",
+    status: "Success",
+    description: 'Shared React component library',
+    health: {
+      branch: 'main',
+      dependencies: 25,
+      testCoverage: '75%',
+      openIssues: 12,
+      lastCommit: '24h',
+      buildStatus: 'Unstable',
+    },
+  }
 ];
 
 export const MOCK_TASKS: AgentTask[] = [
