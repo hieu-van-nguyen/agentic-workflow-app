@@ -1,0 +1,85 @@
+import { Repository, AgentTask, LogEntry } from '../types';
+
+export const MOCK_REPOS: Repository[] = [
+  {
+    id: '1',
+    name: 'gemma4-core',
+    lastActivity: '2h ago: PR #12 created',
+    status: 'Success',
+    description: 'Core engine for the Agentic Portal',
+    health: {
+      branch: 'main',
+      dependencies: 12,
+      testCoverage: '88%',
+      openIssues: 3,
+      lastCommit: '1h',
+      buildStatus: 'Stable',
+    },
+  },
+  {
+    id: '2',
+    name: 'auth-service',
+    lastActivity: '15m ago: Running Tests',
+    status: 'In Progress',
+    description: 'Authentication and Session management',
+    health: {
+      branch: 'main',
+      dependencies: 8,
+      testCoverage: '92%',
+      openIssues: 1,
+      lastCommit: '15m',
+      buildStatus: 'Running',
+    },
+  },
+  {
+    id: '3',
+    name: 'ui-components',
+    lastActivity: '1d ago: Dependency Scan',
+    status: 'Warning',
+    description: 'Shared React component library',
+    health: {
+      branch: 'main',
+      dependencies: 25,
+      testCoverage: '75%',
+      openIssues: 12,
+      lastCommit: '24h',
+      buildStatus: 'Unstable',
+    },
+  },
+];
+
+export const MOCK_TASKS: AgentTask[] = [
+  { id: 'refactor', label: 'Refactor Code', icon: '🛠️' },
+  { id: 'upgrade', label: 'Dependency Upgrade', icon: '📦' },
+  { id: 'test', label: 'Run Test Suite', icon: '🧪' },
+  { id: 'scan', label: 'Security Scan', icon: '🛡️' },
+  { id: 'pr', label: 'Create Feature PR', icon: '📝' },
+  { id: 'analysis', label: 'Codebase Analysis', icon: '🔍' },
+];
+
+export const SIMULATED_LOGS: Record<string, LogEntry[]> = {
+  refactor: [
+    { timestamp: '10:01:05', message: 'Searching for auth_middleware.go...', type: 'search', icon: '🔍' },
+    { timestamp: '10:01:06', message: 'Reading file /src/auth/middleware.go', type: 'read', icon: '📖' },
+    { timestamp: '10:01:10', message: 'Analyzing dependency graph for session provider...', type: 'think', icon: '🧠' },
+    { timestamp: '10:01:15', message: 'Drafting changes for lines 45-82...', type: 'write', icon: '✍️' },
+    { timestamp: '10:01:20', message: 'Running unit tests for auth module...', type: 'test', icon: '🧪' },
+    { timestamp: '10:01:25', message: 'Test failed: SessionTimeoutException. Retrying logic...', type: 'warning', icon: '⚠️' },
+    { timestamp: '10:01:30', message: 'Logic corrected. Re-running tests...', type: 'think', icon: '🧠' },
+    { timestamp: '10:01:35', message: 'All tests passed. Preparing PR...', type: 'success', icon: '🚀' },
+  ],
+  upgrade: [
+    { timestamp: '10:05:00', message: 'Checking for outdated dependencies...', type: 'search', icon: '🔍' },
+    { timestamp: '10:05:10', message: 'Found 3 vulnerable packages in package.json', type: 'warning', icon: '⚠️' },
+    { timestamp: '10:05:20', message: 'Updating lodash to v4.17.21...', type: 'write', icon: '✍️' },
+    { timestamp: '10:05:30', message: 'Running regression tests...', type: 'test', icon: '🧪' },
+    { timestamp: '10:05:45', message: 'All tests passed. Updating lockfile...', type: 'success', icon: '✅' },
+  ],
+  scan: [
+    { timestamp: '11:00:00', message: 'Initiating static analysis...', type: 'think', icon: '🧠' },
+    { timestamp: '11:00:15', message: 'Scanning for hardcoded secrets...', type: 'search', icon: '🔍' },
+    { timestamp: '11:00:30', message: 'Found possible AWS key in /config/settings.yaml', type: 'warning', icon: '⚠️' },
+    { timestamp: '11:00:45', message: 'Verifying secret authenticity...', type: 'think', icon: '🧠' },
+    { timestamp: '11:01:00', message: 'Confirmed leak. Flagging for immediate fix...', type: 'warning', icon: '⚠️' },
+  ],
+};

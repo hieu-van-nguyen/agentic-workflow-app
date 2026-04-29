@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { View } from './types';
+import { RepoDashboard } from './components/Dashboard';
+import { RepoInsights } from './components/Insights';
+import { ExecutionMonitor } from './components/Monitor';
 
-function App() {
+export default function App() {
+  const [currentView, setCurrentView] = useState<View>('Dashboard');
+  const [activeRepoId, setActiveRepoId] = useState<string | undefined>(undefined);
+
+  const navigate = (view: View, repoId?: string) => {
+    if (repoId) {
+      setActiveRepoId(repoId);
+    }
+    setCurrentView(view);
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="min-h-screen bg-gray-50 text-gray-900 font-sans antialiased">
+      {currentView === 'Dashboard' && (
+        <RepoDashboard onNavigate={navigate} />
+      )}
+      {currentView === 'Insights' && (
+        <RepoInsights
+          repoId={activeRepoId || ''}
+          onNavigate={navigate}
+        />
+      )}
+      {currentView === 'Monitor' && (
+        <ExecutionMonitor
+          repoId={activeRepoId || ''}
+          onNavigate={navigate}
+        />
+      )}
     </div>
   );
 }
-
-export default App;
