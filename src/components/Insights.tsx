@@ -16,23 +16,24 @@ export const RepoInsights: React.FC<RepoInsightsProps> = ({ repoId, onNavigate }
 
   return (
     <div className="p-8 max-w-4xl mx-auto">
-      <header className="flex items-center gap-4 mb-8">
+      <header className="flex items-center gap-4 mb-8 border-b pb-4">
         <button
           onClick={() => onNavigate('Dashboard')}
-          className="text-gray-500 hover:text-gray-800 transition-colors"
+          className="text-gray-500 hover:text-gray-800 transition-colors flex items-center gap-1 text-sm font-medium"
         >
           ← Back to Repos
         </button>
-        <h1 className="text-2xl font-bold text-gray-800">
+        <span className="text-gray-300">|</span>
+        <h1 className="text-xl font-semibold text-gray-800">
           {repo.name} / Insights
         </h1>
       </header>
 
       <section className="mb-12">
-        <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
+        <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
           Repo Health Summary
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-3 gap-3">
           {[
             { label: 'Main Branch', value: repo.health.branch, icon: '🟢' },
             { label: 'Dependencies', value: repo.health.dependencies, icon: '📦' },
@@ -41,31 +42,30 @@ export const RepoInsights: React.FC<RepoInsightsProps> = ({ repoId, onNavigate }
             { label: 'Last Commit', value: repo.health.lastCommit, icon: '🕒' },
             { label: 'Build Status', value: repo.health.buildStatus, icon: '🚀' },
           ].map((item, idx) => (
-            <div key={idx} className="p-4 bg-white border rounded-xl shadow-sm flex flex-col">
-              <span className="text-xs text-gray-400 font-medium mb-1">{item.label}</span>
-              <span className="text-sm font-bold text-gray-800">
-                {item.icon} {item.value}
-              </span>
+            <div key={idx} className="px-3 py-1.5 bg-gray-100 border border-gray-200 rounded-full text-sm font-medium text-gray-700 flex items-center gap-2 shadow-sm">
+              <span>{item.icon} {item.label}: {item.value}</span>
             </div>
           ))}
         </div>
       </section>
 
-      <section className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-        <h2 className="text-lg font-bold text-blue-900 mb-4">Trigger AI Agent</h2>
+      <section className="border-t pt-8">
+        <h2 className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-6">
+          Trigger AI Agent
+        </h2>
 
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-blue-700 mb-3">
+        <div className="mb-8">
+          <label className="block text-sm font-semibold text-gray-700 mb-4">
             Choose a Task:
           </label>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {MOCK_TASKS.map(task => (
               <label
                 key={task.id}
                 className={`flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition-all ${
                   selectedTaskId === task.id
-                    ? 'bg-white border-blue-500 ring-2 ring-blue-200 text-blue-700 shadow-sm'
-                    : 'bg-blue-100/50 border-blue-200 text-blue-600 hover:bg-blue-100'
+                    ? 'bg-blue-50 border-blue-500 ring-1 ring-blue-500 text-blue-700 shadow-sm font-medium'
+                    : 'bg-white border-gray-200 text-gray-600 hover:bg-gray-50'
                 }`}
               >
                 <input
@@ -75,18 +75,18 @@ export const RepoInsights: React.FC<RepoInsightsProps> = ({ repoId, onNavigate }
                   checked={selectedTaskId === task.id}
                   onChange={() => setSelectedTaskId(task.id)}
                 />
-                <span>{task.icon} {task.label}</span>
+                <span className="text-sm">{task.icon} {task.label}</span>
               </label>
             ))}
           </div>
         </div>
 
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-blue-700 mb-2">
+        <div className="mb-8">
+          <label className="block text-sm font-semibold text-gray-700 mb-4">
             Prompt / Instructions:
           </label>
           <textarea
-            className="w-full p-3 border border-blue-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none h-24 text-sm"
+            className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none h-32 text-sm transition-all bg-gray-50 focus:bg-white"
             placeholder="e.g., Refactor the auth middleware to use the new session provider..."
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
@@ -96,7 +96,7 @@ export const RepoInsights: React.FC<RepoInsightsProps> = ({ repoId, onNavigate }
         <div className="flex justify-end">
           <button
             onClick={() => onNavigate('Monitor', repo.id)}
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-bold transition-all shadow-md flex items-center gap-2"
+            className="px-8 py-3 bg-gray-900 hover:bg-black text-white rounded-xl font-bold transition-all shadow-lg flex items-center gap-2 active:scale-95"
           >
             LAUNCH AGENT 🚀
           </button>
