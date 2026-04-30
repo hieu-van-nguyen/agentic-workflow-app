@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/agentic-workflow-app/static/css/main.a9a44919.css",
+    "main.js": "/agentic-workflow-app/static/js/main.9247db15.js",
+    "static/js/453.456fcd7e.chunk.js": "/agentic-workflow-app/static/js/453.456fcd7e.chunk.js",
+    "index.html": "/agentic-workflow-app/index.html",
+    "main.a9a44919.css.map": "/agentic-workflow-app/static/css/main.a9a44919.css.map",
+    "main.9247db15.js.map": "/agentic-workflow-app/static/js/main.9247db15.js.map",
+    "453.456fcd7e.chunk.js.map": "/agentic-workflow-app/static/js/453.456fcd7e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a9a44919.css",
+    "static/js/main.9247db15.js"
+  ]
+}
