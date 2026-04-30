@@ -16,7 +16,7 @@ const StatusBadge = ({ status }: { status: Repository['status'] }) => {
   };
 
   return (
-    <Badge bg={variantMap[status] || 'secondary'}>
+    <Badge bg={variantMap[status] || 'secondary'} style={{ width: '100px' }} >
       {status}
     </Badge>
   );
@@ -31,31 +31,32 @@ export const RepoDashboard: React.FC<RepoDashboardProps> = ({ onNavigate }) => {
 
   return (
     <div style={{ minHeight: '100vh' }}>
-      <Navbar bg="white" expand="lg" className="border-bottom px-3 py-2 sticky-top">
-        <Container fluid>
-          <Navbar.Brand href="#home" className="fw-bold text-dark d-flex align-items-center gap-2">
-            <span className="text-primary">▣</span> Agentic Portal
-          </Navbar.Brand>
+        <Navbar bg="white" expand="lg" className="border-bottom px-3 py-2 sticky-top">
+          <Container className="max-width-6xl">
+            <Navbar.Brand href="#home" className="fw-bold text-dark d-flex align-items-center gap-2">
+              <span className="text-primary">▣</span> Dev Agentic Portal
+            </Navbar.Brand>
 
-          <Form.Control
-            type="text"
-            placeholder="Search Repos..."
-            className="mx-auto d-flex align-items-center"
-            style={{ maxWidth: '400px' }}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
+            <Form.Control
+              type="text"
+              placeholder="Search ..."
+              className="mx-auto d-flex align-items-center"
+              style={{ maxWidth: '400px' }}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
 
-          <Nav className="ms-auto d-flex gap-3 align-items-center">
-            <Nav.Link href="#profile" className="text-dark text-decoration-none small fw-medium">
-              User Profile 👤
-            </Nav.Link>
-            <Nav.Link href="#settings" className="text-dark text-decoration-none small fw-medium">
-              Settings ⚙️
-            </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+            <Nav className="ms-auto d-flex gap-3 align-items-center">
+              <Nav.Link href="#profile" className="text-dark text-decoration-none small fw-medium">
+                User Profile 👤
+              </Nav.Link>
+              <Nav.Link href="#settings" className="text-dark text-decoration-none small fw-medium">
+                Settings ⚙️
+              </Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
+      
 
       <Container className="py-5 max-width-6xl">
         <h1 className="h4 fw-bold text-uppercase tracking-wide mb-2">My Repositories</h1>
@@ -96,6 +97,7 @@ export const RepoDashboard: React.FC<RepoDashboardProps> = ({ onNavigate }) => {
                         size="sm"
                         className="border"
                         onClick={() => onNavigate('Monitor', repo.id)}
+                        style={{width: '100px'}}
                       >
                         View Log 📄
                       </Button>
@@ -104,6 +106,7 @@ export const RepoDashboard: React.FC<RepoDashboardProps> = ({ onNavigate }) => {
                         variant="primary"
                         size="sm"
                         onClick={() => onNavigate('Insights', repo.id)}
+                        style={{width: '100px'}}
                       >
                         Trigger ⚡
                       </Button>
@@ -117,7 +120,7 @@ export const RepoDashboard: React.FC<RepoDashboardProps> = ({ onNavigate }) => {
 
         <div className="mt-4">
           <Button
-            variant="outline-secondary"
+            variant="primary"
             className="border-dashed py-2 px-4"
             style={{ borderStyle: 'dashed' }}
           >
